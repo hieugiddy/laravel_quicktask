@@ -16,7 +16,9 @@ class TaskController extends Controller{
     }
 
     function Index(){
-        return view('home');
+        $data=$this->taskRepo->getAll();
+
+        return view('home',['data'=>$data]);
     }
 
     function ThemTask(CreateTask $request){
@@ -28,6 +30,6 @@ class TaskController extends Controller{
     }
 
     function XoaTask($id){
-
+        echo 'Xoa';
     }
 }

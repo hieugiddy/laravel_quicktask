@@ -11,5 +11,7 @@ class TaskRepository extends BaseRepository implements TaskInterface
     {
         return Task::class;
     }
-    
+    public function getAll(){
+        return Task::paginate(15);
+    }
 }

@@ -2,14 +2,14 @@
 <html lang="vi">
 <head>
     <title>@yield('title')</title>
-    @include('components.head');
+    @include('components.head')
 </head>
 <body>
-    @include('components.header');
+    @include('components.header')
 
 <div class="col-md-9 mx-auto">
-    @yield('content');
+    @yield('content')
 </div>
-    @include('components.footer');
+    @include('components.footer')
 </body>
 </html>

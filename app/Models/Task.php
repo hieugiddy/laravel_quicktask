@@ -10,7 +10,7 @@ class Task extends Model
         'id', 'name', 'created_at', 'updated_at',
     ];
 
-    protected $table = 'Task';
+    protected $table = 'tasks';
 
     protected $primaryKey = 'id';
 }

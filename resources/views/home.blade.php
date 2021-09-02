@@ -3,7 +3,7 @@
 
 @section('content')
 
-<a href="{{ route('task.them') }}" class="btn btn-success mb-3 mt-2">
+<a href="{{ route('task.them') }}" class="btn btn-success mb-3 mt-3">
     <i class="fa fa-plus"></i> Thêm Task
 </a>
 
@@ -28,35 +28,41 @@
         </tr>
     </thead>
     <tbody>
+        @foreach($data as $item)
             <tr>
                 <td scope="row" style="vertical-align: middle;">
-                   
-                </td>
-                <td>
-                    <img src="" width="100px"/>
+                    {{ $item->id }}
                 </td>
                 <td style="vertical-align: middle;">
-                    
+                    {{ $item->name }}
                 </td>
                 <td style="vertical-align: middle;">
-                    
+                    {{ $item->created_at }}
+                </td>
+                <td style="vertical-align: middle;">
+                    {{ $item->updated_at }}
                 </td>
                 <td width="150px" style="vertical-align: middle;">
-                    <form action="" method="post">
-                        <a href="" 
+                    <form action="{{ route('task.xoa',['id'=>$item->id]) }}" method="post">
+                        <a href="{{ route('task.sua',['id'=>$item->id]) }}" 
                         class="btn btn-light">
                             <i class="fa fa-edit"></i>
                         </a>
-                        <input type="hidden" name="ID_Sach" value="">
+
+                        @method('delete')
+                        @csrf
                         <button type="submit" class="btn btn-light">
                             <i class="fa fa-trash"></i>
                         </button>
                     </form>
                 </td>
             </tr>
+        @endforeach
     </tbody>
 </table>
-
+<br/>
+{{ $data->links() }}
+<br/>
 <script>
     setTimeout(function(){
         $(".alert").css("display","none");

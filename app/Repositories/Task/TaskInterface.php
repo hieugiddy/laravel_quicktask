@@ -6,5 +6,5 @@ use App\Repositories\RepositoryInterface;
 
 interface TaskInterface extends RepositoryInterface
 {
-    
+ 	public function getAll();
 }
