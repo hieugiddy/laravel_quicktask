@@ -16,10 +16,10 @@ use App\Http\Controllers;
 
 Route::get('/',[Controllers\TaskController::class,'Index'])->name('home');
 Route::group(['prefix'=>'task','as'=>'task.'],function(){
-	Route::get('them',[Controllers\TaskController::class,'ThemTask'])->name('them');
+	Route::get('them',[Controllers\TaskController::class,'viewThemTask'])->name('them');
 	Route::post('them',[Controllers\TaskController::class,'ThemTask']);
 
-	Route::get('sua/{id?}',[Controllers\TaskController::class,'SuaTask'])->name('sua');
+	Route::get('sua/{id?}',[Controllers\TaskController::class,'viewSuaTask'])->name('sua');
 	Route::put('sua/{id?}',[Controllers\TaskController::class,'SuaTask']);
 
 	Route::delete('xoa/{id?}',[Controllers\TaskController::class,'XoaTask'])->name('xoa');

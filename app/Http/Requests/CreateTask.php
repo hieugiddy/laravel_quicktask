@@ -24,7 +24,21 @@ class CreateTask extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Tên nhiệm vụ',
+        ];
+    } 
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Tên nhiệm vụ không được để trống',
         ];
     }
 }
