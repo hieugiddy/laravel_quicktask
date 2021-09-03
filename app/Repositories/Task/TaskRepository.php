@@ -29,4 +29,28 @@ class TaskRepository extends BaseRepository implements TaskInterface
         DB::commit();
         return true;
     }
+    public function getTask($id){
+        try{
+            $task=Task::findOrFail($id);
+            return $task;
+        }
+        catch(Exception $exception){
+            return false;
+        }
+    }
+
+    public function edit($name,$id){
+        try{
+            DB::beginTransaction();
+            $task=Task::findOrFail($id);
+            $task->name=$name;
+            $task->save();
+        }
+        catch(Exception $exception){
+            DB::rollBack();
+            return false;
+        }
+        DB::commit();
+        return true;
+    }
 }

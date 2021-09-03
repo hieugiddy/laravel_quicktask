@@ -32,11 +32,16 @@ class TaskController extends Controller{
             return redirect(route('home'))->with('error','Thêm không thành công');
     }
 
-    function viewSuaTask(){
-        return view('sua');
+    function viewSuaTask($id){
+        $data=$this->taskRepo->getTask($id);
+        return view('sua',['data'=>$data]);
     }
     function SuaTask(UpdateTask $request,$id){
-
+        $result=$this->taskRepo->edit($request->get('name'),$id);
+        if($result)
+            return redirect(route('home'))->with('message','Thêm thành công');
+        else
+            return redirect(route('home'))->with('error','Thêm không thành công');
     }
 
     function XoaTask($id){

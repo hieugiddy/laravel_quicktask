@@ -6,8 +6,10 @@
     <a class="breadcrumb-item" href="{{ route('home') }}">Task</a>
     <span class="breadcrumb-item active">Thêm Task</span>
 </nav>
-{{ Form::open(array('route' => 'task.them', 'method' => 'post')) }}
-    {{ Form::label('TenTask', 'Nhập nội dung vào ô bên dưới') }}
+<form action="{{ route('task.them') }}" method="post">
+    @csrf
+    @method('post')
+    <label for="">Nhập nội dung vào ô bên dưới</label>
     <div class="input-group mb-3">
         <input type="text" class="col-md-4 form-control mr-3" name="name">
         <button type="submit" class="btn btn-success">Thêm</button>
@@ -15,6 +17,6 @@
     @error('name')
         <em>{{ $message }}</em>
     @enderror
-{{ Form::close() }}
+</form>
 
 @endsection
