@@ -10,4 +10,5 @@ interface TaskInterface extends RepositoryInterface
  	public function getTask($id);
  	public function add($task);
  	public function edit($name,$id);
+ 	public function delete($id);
 }

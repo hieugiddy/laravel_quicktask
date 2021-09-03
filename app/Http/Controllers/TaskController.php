@@ -45,6 +45,10 @@ class TaskController extends Controller{
     }
 
     function XoaTask($id){
-        echo 'Xoa';
+        $result=$this->taskRepo->delete($id);
+        if($result)
+            return redirect(route('home'))->with('message','Thêm thành công');
+        else
+            return redirect(route('home'))->with('error','Thêm không thành công');
     }
 }

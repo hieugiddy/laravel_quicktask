@@ -53,4 +53,18 @@ class TaskRepository extends BaseRepository implements TaskInterface
         DB::commit();
         return true;
     }
+
+    public function delete($id){
+        try{
+            DB::beginTransaction();
+            $task=Task::findOrFail($id);
+            $task->delete();
+        }
+        catch(Exception $exception){
+            DB::rollBack();
+            return false;
+        }
+        DB::commit();
+        return true;
+    }
 }
