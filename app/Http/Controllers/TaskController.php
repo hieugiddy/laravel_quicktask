@@ -21,10 +21,20 @@ class TaskController extends Controller{
         return view('home',['data'=>$data]);
     }
 
+    function viewThemTask(){
+        return view('them');
+    }
     function ThemTask(CreateTask $request){
-
+        $result=$this->taskRepo->add($request->get('name'));
+        if($result)
+            return redirect(route('home'))->with('message','Thêm thành công');
+        else
+            return redirect(route('home'))->with('error','Thêm không thành công');
     }
 
+    function viewSuaTask(){
+        return view('sua');
+    }
     function SuaTask(UpdateTask $request,$id){
 
     }

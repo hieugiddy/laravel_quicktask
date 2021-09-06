@@ -7,16 +7,21 @@
     <i class="fa fa-plus"></i> Thêm Task
 </a>
 
-<!--        
-        <div class="alert alert-success" role="alert">
-            <strong>Thành công</strong>
-        </div>
+@php
+    if (session('message'))
+    {
+      echo '<div class="alert alert-success" role="alert">
+                <strong>Thành công</strong>
+            </div>';
+    }
+    if (session('error'))
+    {
+      echo '<div class="alert alert-danger" role="alert">
+                <strong>Thất bại</strong>
+            </div>';
+    }
+@endphp
 
-
-        <div class="alert alert-danger" role="alert">
-            <strong>Thất bại</strong>
-        </div>
--->
 <table class="table table-striped mt-4">
     <thead class="thead-inverse">
         <tr>
