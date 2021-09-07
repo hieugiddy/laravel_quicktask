@@ -14,6 +14,14 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/',function(){
-	return view('home');
+
+Route::get('/',[Controllers\TaskController::class,'index'])->name('home');
+Route::group(['prefix'=>'task','as'=>'task.'],function(){
+	Route::get('them',[Controllers\TaskController::class,'viewThemTask'])->name('them');
+	Route::post('them',[Controllers\TaskController::class,'new']);
+
+	Route::get('sua/{id?}',[Controllers\TaskController::class,'viewSuaTask'])->name('sua');
+	Route::put('sua/{id?}',[Controllers\TaskController::class,'update']);
+
+	Route::delete('xoa/{id?}',[Controllers\TaskController::class,'delete'])->name('xoa');
 });
